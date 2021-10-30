@@ -43,7 +43,7 @@ const playPause = () => {
   
 }
 
-playPause();
+// playPause();
 
 document.querySelector('.controls').addEventListener('mouseover', () => {
   bool = false;
