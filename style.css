@@ -439,6 +439,7 @@ html {
   background-color: var(--black-color);
   flex-direction: column;
   padding: 15rem 0;
+  clip-path: polygon(68% 0, 100% 0, 100% 97%, 38% 100%, 0 100%, 0 3%);
 }
 
 .section-3-heading {
@@ -459,6 +460,16 @@ html {
   width: inherit;
 }
 
+.macbook-img-1 {
+  transform: rotateX(-80deg);
+  transform-origin: bottom;
+}
+
+.change .macbook-img-1 {
+  transform: rotateX(0);
+  transition: transform 3s;
+}
+
 .loading-wrapper {
   position: absolute;
   top: 6%;
@@ -466,6 +477,12 @@ html {
   height: 85%;
   background: linear-gradient(rgba(255,255,255,.6), rgba(255,255,255,.6)),url(images/MacBook/macbook-1-desktop.png) center no-repeat;
   z-index: -1;
+  opacity: 0;
+}
+
+.change .loading-wrapper {
+  opacity: 1;
+  transition: opacity 1s 2s;
 }
 
 .loading {
@@ -476,17 +493,41 @@ html {
   top: 0;
   left: 0;
   background-color: var(--black-color);
+  flex-direction: column;
+}
+
+.change .loading {
+  opacity: 0;
+  transition: 1s 5s;
 }
 
 .loading i {
   font-size: 10rem;
   color: var(--white-color);
+  margin-bottom: 2rem;
 }
 
 .progress-bar {
   width: 22rem;
   height: 0.3rem;
   background-color: #888;
+  border-radius: 5rem;
+  position: relative;
+}
+
+.progress-bar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: var(--white-color);
+}
+
+.change .progress-bar::after {
+  width: 100%;
+  transition: width 1s 3s;
 }
 
 .macbook-info {
@@ -494,6 +535,11 @@ html {
   width: 70rem;
   text-align: center;
   opacity: 0;
+}
+
+.change .macbook-info {
+  opacity: 1;
+  transition: opacity 1s 6s;
 }
 
 .macbook-info-heading {
@@ -519,5 +565,108 @@ html {
   font-weight: 500;
   letter-spacing: .2rem;
   color: var(--primary-color);
+  cursor: pointer;
+}
+
+ 
+/* ====== Section 4 ====== */
+.section-4 {
+  height: 140vh;
+  padding: 20vh 0;
+  flex-direction: column;
+  position:relative;
+}
+
+/*  Section Watches */
+.watches {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.watches > div {
+  position: absolute;
+}
+
+/*  Watch Bands */
+.watch-bands {
+  transition: margin-right 1s;
+}
+
+.watch-band-img {
+  width: 35rem;
+  height: 35rem;
+  object-fit: contain;
+}
+
+/*  Watch Cases */
+.watch-cases {
+  flex-direction: column;
+  transition: margin-top 1s;
+}
+
+.watch-case-img {
+  width: 35rem;
+  height: 35rem;
+  object-fit: contain;
+}
+ 
+/*  Watch Controls */
+.watch-control {
+  position: absolute;
+  width: 4rem;
+  height: 4rem;
+  background-color: rgba(221, 221, 221, 0.4);
+  border-radius: 5rem;
+}
+
+.hideControl {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.watch-control i {
+  font-size: 3rem;
+  color: var(--primary-color);
+}
+
+.watch-top-control {
+  top: 22vh;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.watch-right-control {
+  top: 50%;
+  right: 2rem;
+  transform: translateY(-50%);
+}
+
+.watch-bottom-control {
+  left: 50%;
+  bottom: 20vh;
+  transform: translateX(-50%);
+}
+
+.watch-left-control {
+  left: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/*  Watch Button */
+.watch-btn {
+  position: absolute;
+  bottom: 30vh;
+  right: 35%;
+  width: 13rem;
+  height: 5rem;
+  background-color: var(--black-color);
+  color: var(--primary-color);
+  border: .1rem dashed var(--white-color);
+  border-radius: 4rem;
+  font-size: 1.6rem;
+  font-weight: 200;
   cursor: pointer;
 }
